@@ -18,10 +18,10 @@ function SendMessageToDingding(){
 }
 
 #查找最近一分钟内修改过的文件
-files=`find  $dataDir  -type f  -cmin 1 | grep jar`
-if [[ ! -z $files ]]; then
+files=$(find  $dataDir  -type f  -cmin 1 | grep jar)
+if [[ -n $files ]]; then
     Body="不好了最近一分钟下列文件发生变动:$files"
-    echo $Body
+    echo "$Body"
     #SendMessageToDingding $Body $Dingding_Url
 fi
 exit 0
